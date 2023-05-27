@@ -5,8 +5,8 @@ function gerarCartela() {
 
     var tabela = document.createElement('section')
     var bingo = document.createElement('h4')
-    bingo.textContent = ("BINGO")
-    var x = document.createTextNode("x")
+    bingo.textContent = ("cartela do " + nome)
+    var x = document.createTextNode("X")
     tabela.appendChild(bingo)
 
     var corpoTabela = document.createElement("table");
@@ -23,7 +23,6 @@ function gerarCartela() {
             for (let k = 0; k < 24; k++) {
                 var n = Math.floor(Math.random() * 61);
                 var textNode = document.createTextNode(n);
-
             } if (i === 2 && j === 2) {
                 textNode = x
             }
@@ -38,19 +37,16 @@ function gerarNumeros() {
     var resultados = document.getElementById("numeros");
     var numerosJaSorteados = document.querySelectorAll('.s');
     var numeros = [];
+    var numeroSorteado = Math.floor(Math.random() * 61);
 
     for (var i = 0; i < numerosJaSorteados.length; i++) {
         var elemento = numerosJaSorteados[i];
         numeros.push(elemento.textContent);
-    }
+    } if (numeroSorteado)
 
-    alert(numeros);
-
-
-    var campoNumero = document.createElement('section')
+        var campoNumero = document.createElement('section')
     campoNumero.classList.add('s');
 
-    var numeroSorteado = Math.floor(Math.random() * 61);
     var textN = document.createTextNode(numeroSorteado);
 
     resultados.appendChild(campoNumero);

@@ -10,20 +10,20 @@ body {
 
 header {
     padding: 10vh;
+    min-height: 40vh;
 }
 
 main {
     display: flex;
-    height: 100%;
 }
 
 div#esquerda {
     width: 50vw;
     background-color: burlywood;
+    min-height: 60vh;
 }
 
 div#cartelas {
-    height: 100%;
     width: 100%;
     background-color: palevioletred;
     padding: 3px;
@@ -37,6 +37,9 @@ div#cartelas {
     margin: 3px;
     padding: 10px;
     background-color: blueviolet;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 table {
@@ -61,7 +64,6 @@ div#direita {
 
 #numeros {
     background-color: dodgerblue;
-    height: 100%;
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
