@@ -36,7 +36,16 @@ function gerarCartela() {
 
 function gerarNumeros() {
     var resultados = document.getElementById("numeros");
-    var numerosJaSorteados = document.querySelectorAll('.s')
+    var numerosJaSorteados = document.querySelectorAll('.s');
+    var numeros = [];
+
+    for (var i = 0; i < numerosJaSorteados.length; i++) {
+        var elemento = numerosJaSorteados[i];
+        numeros.push(elemento.textContent);
+    }
+
+    alert(numeros);
+
 
     var campoNumero = document.createElement('section')
     campoNumero.classList.add('s');
