@@ -1,0 +1,80 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+}
+
+header {
+    padding: 10vh;
+}
+
+main {
+    display: flex;
+    height: 100%;
+}
+
+div#esquerda {
+    width: 50vw;
+    background-color: burlywood;
+}
+
+div#cartelas {
+    height: 100%;
+    width: 100%;
+    background-color: palevioletred;
+    padding: 3px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+.tabela {
+    border: solid 1px;
+    margin: 3px;
+    padding: 10px;
+    background-color: blueviolet;
+}
+
+table {
+    height: 150px;
+    width: 150px;
+    border: solid 1px;
+    border-collapse: collapse;
+}
+
+td {
+    border: solid 1px;
+    background-color: #d9d9d9;
+    height: 15px;
+    width: 15px;
+    text-align: center;
+}
+
+div#direita {
+    background-color: aqua;
+    width: 50vw;
+}
+
+#numeros {
+    background-color: dodgerblue;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+.s {
+    margin: 10px;
+    height: 50px;
+    width: 50px;
+    background-color: #d9d9d9;
+    display: flex;
+    border: solid 1px;
+    border-radius: 2px;
+    justify-content: center;
+    align-items: center;
+}
