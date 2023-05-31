@@ -1,54 +1,147 @@
 function gerarCartela() {
+    //seleciona o nome no input, declara o espaco onde as cartelas vao ficar
     var nome = document.getElementById('nomes').value;
+    var espacoCartelas = document.getElementById('cartelas');
 
-    var espacoCartelas = document.getElementById('cartelas')
+    //cria uma seçao tabela para conter a tabela
+    var tabela = document.createElement('section');
+    var bingo = document.createElement('h4');
 
-    var tabela = document.createElement('section')
-    var bingo = document.createElement('h4')
-    bingo.textContent = ("cartela do " + nome)
-    var x = document.createTextNode("X")
-    tabela.appendChild(bingo)
+    //deixa bingo escrito na parte de cima da seçao tabela
+    bingo.textContent = "BINGO";
+    tabela.appendChild(bingo);
+    var x = document.createTextNode("X");
 
+    //cria a marcaçao tabela
     var corpoTabela = document.createElement("table");
     tabela.classList.add('tabela');
 
+    //considera o nome no input como id da tabela criada
+    tabela.id = nome
+
+    //coloca a tabela no espaço destinado as cartelas
     espacoCartelas.appendChild(tabela);
 
+    //cria um array que conterá os nºs na cartela
+    var numerosDaCartela = [];
+
+    //cria 5 table rows
     for (let i = 0; i < 5; i++) {
-        var tr = corpoTabela.insertRow(0);
-        corpoTabela.appendChild(tr)
+
+        var tr = corpoTabela.insertRow();
+
+        //cria 5 celulas para cada linha
         for (let j = 0; j < 5; j++) {
-            var td = tr.insertCell(0)
-            tr.appendChild(td)
-            for (let k = 0; k < 24; k++) {
-                var n = Math.floor(Math.random() * 61);
-                var textNode = document.createTextNode(n);
-            } if (i === 2 && j === 2) {
-                textNode = x
+
+            var td = tr.insertCell();
+
+            if (j === 0) {
+                do {
+                    numeroSorteado = Math.floor(Math.random() * 15) + 1;
+                }
+                while (numerosDaCartela.includes(numeroSorteado));
+                numerosDaCartela.push(numeroSorteado)
+
+                var textNode = document.createTextNode(numeroSorteado);
+                td.id = numeroSorteado
+                td.appendChild(textNode);
+
+            } else if (j === 1) {
+                do {
+                    numeroSorteado = Math.floor(Math.random() * 15) + 16;
+                }
+                while (numerosDaCartela.includes(numeroSorteado));
+                numerosDaCartela.push(numeroSorteado)
+
+                var textNode = document.createTextNode(numeroSorteado);
+                td.id = numeroSorteado
+                td.appendChild(textNode);
+
+
+            } else if (i === 2 && j === 2) {
+                td.appendChild(x)
             }
-            td.appendChild(textNode);
+
+            else if (j === 2) {
+                do {
+                    numeroSorteado = Math.floor(Math.random() * 15) + 31;
+                }
+                while (numerosDaCartela.includes(numeroSorteado));
+                numerosDaCartela.push(numeroSorteado);
+
+                var textNode = document.createTextNode(numeroSorteado);
+                td.id = numeroSorteado
+                td.appendChild(textNode);
+
+            } else if (j === 3) {
+                do {
+                    numeroSorteado = Math.floor(Math.random() * 15) + 46;
+                }
+                while (numerosDaCartela.includes(numeroSorteado));
+                numerosDaCartela.push(numeroSorteado);
+
+                var textNode = document.createTextNode(numeroSorteado);
+                td.id = numeroSorteado
+                td.appendChild(textNode);
+            } else if (j === 4) {
+                do {
+                    numeroSorteado = Math.floor(Math.random() * 15) + 61;
+                }
+                while (numerosDaCartela.includes(numeroSorteado));
+                numerosDaCartela.push(numeroSorteado)
+
+                var textNode = document.createTextNode(numeroSorteado);
+                td.id = numeroSorteado
+                td.appendChild(textNode);
+
+            }
         }
+
+        tabela.appendChild(corpoTabela);
     }
-    tabela.appendChild(corpoTabela);
-
 }
 
-function gerarNumeros() {
+
+function jogar() {
+    var quantidadeJogadores = document.querySelectorAll('.tabela').length;
     var resultados = document.getElementById("numeros");
-    var numerosJaSorteados = document.querySelectorAll('.s');
-    var numeros = [];
-    var numeroSorteado = Math.floor(Math.random() * 61);
 
-    for (var i = 0; i < numerosJaSorteados.length; i++) {
-        var elemento = numerosJaSorteados[i];
-        numeros.push(elemento.textContent);
-    } if (numeroSorteado)
+    var numerosJaSorteados = [];
+    //SELECIONA OS NUMEROS
+    var tdArray = Array.from(document.querySelectorAll("#cartelas > section > table > tbody > tr > td"));
+    var textArray = tdArray.map(function (td) {
+        return td.textContent;
+    });
+    alert(textArray.join(", "));
 
-        var campoNumero = document.createElement('section')
-    campoNumero.classList.add('s');
 
-    var textN = document.createTextNode(numeroSorteado);
+    while (numerosJaSorteados.length < 76) {
 
-    resultados.appendChild(campoNumero);
-    campoNumero.appendChild(textN)
-}
+        var numeroSorteado = Math.floor(Math.random() * 75) + 1;
+
+        if (numerosJaSorteados.includes(numeroSorteado)) {
+
+            console.log("repetido");
+
+        } else {
+
+            numerosJaSorteados.push(numeroSorteado);
+            var campoNumero = document.createElement('section');
+            campoNumero.classList.add('s');
+            campoNumero.id = numeroSorteado
+            var textN = document.createTextNode(numeroSorteado);
+            resultados.appendChild(campoNumero);
+            campoNumero.appendChild(textN);
+
+            if (tdArray.includes(numeroSorteado)) {
+                var numerosCartela = document.querySelectorAll("#cartelas .tabela td[id='#" + numeroSorteado.toString() + "']");
+                // Faça algo com os elementos numerosCartela selecionados
+                numerosCartela.classList.add('acertou')
+            }
+
+
+        }
+
+    }
+
+}    
