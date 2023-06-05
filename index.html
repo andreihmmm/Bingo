@@ -13,21 +13,28 @@
 <body>
     <header>
         <h1>Bem-vindo ao bingo!</h1>
-        <h4>Digite seu nome</h4>
-        <input type="text" id="nomes">
-        <button id="addJogador" onclick="gerarCartela()">Clique para adicionar um jogador</button>
-        <button id="Sortear" onclick="gerarNumeros()">Clique aqui para sortear números</button>
+        <div id="entradas">
+            <div id="header-esquerda">
+                <label for="nomes"> Digite seu nome</label>
+                <input type="text" id="nomes" placeholder="Nome">
+                <button id="addJogador" onclick="gerarCartela()">adicionar um jogador</button>
+            </div>
+            <div id="header-direita">
+                <button id="Sortear" onclick="jogar()">sortear números</button>
+                <button id="reiniciar" onclick="apagar()">APAGAR</button>
+            </div>
+        </div>
     </header>
     <main>
         <div id="esquerda">
             <h2>Cartelas:</h2>
             <div id="cartelas">
+
             </div>
         </div>
         <div id="direita">
             <h2>Números sorteados:</h2>
             <section id="numeros">
-                <section class="s">10</section>
             </section>
         </div>
     </main>

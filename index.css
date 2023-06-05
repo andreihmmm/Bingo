@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Noto Sans', sans-serif;
+    color: #2D2A32;
 }
 
 body {
@@ -9,8 +13,55 @@ body {
 }
 
 header {
+    background-color: #EAE151;
     padding: 10vh;
     min-height: 40vh;
+}
+
+h1 {
+    font-weight: 800;
+    color: #FAFDF6;
+    width: 50%;
+    background-color: #2D2A32;
+    box-shadow: 0px 10px 5px #2D2A32;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+#nomes {
+    background-color: #FAFDF6;
+    border-style: none;
+    padding: 5px;
+    border-radius: 2px;
+    outline: none;
+}
+
+#entradas {
+    display: flex;
+}
+
+#header-esquerda,
+#header-direita {
+    width: 50%;
+}
+
+#header-esquerda {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+button {
+    background-color: #2D2A32;
+    color: #FAFDF6;
+    border-style: none;
+    padding: 5px;
+    border-radius: 2px;
+    box-shadow: 0px 5px 5px #2D2A32;
+    cursor: pointer;
+
 }
 
 main {
@@ -36,10 +87,16 @@ div#cartelas {
     border: solid 1px;
     margin: 3px;
     padding: 10px;
-    background-color: blueviolet;
+    background-color: #d9d9d9;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.tabela h4 {
+    display: table-cell;
+    letter-spacing: 20px;
+    padding-left: 22px;
 }
 
 table {
@@ -71,12 +128,16 @@ div#direita {
 
 .s {
     margin: 10px;
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
     background-color: #d9d9d9;
     display: flex;
     border: solid 1px;
     border-radius: 2px;
     justify-content: center;
     align-items: center;
+}
+
+.acertou {
+    background-color: greenyellow;
 }

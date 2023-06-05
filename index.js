@@ -1,11 +1,17 @@
 function gerarCartela() {
     //seleciona o nome no input, declara o espaco onde as cartelas vao ficar
-    var nome = document.getElementById('nomes').value;
+    var nome = document.getElementById('nomes').value
+    if (nome == '') {
+        alert('insira um nome po');
+        return
+    }
     var espacoCartelas = document.getElementById('cartelas');
 
     //cria uma seçao tabela para conter a tabela
     var tabela = document.createElement('section');
     var bingo = document.createElement('h4');
+    var nomeTn = document.createTextNode(nome)
+    tabela.appendChild(nomeTn);
 
     //deixa bingo escrito na parte de cima da seçao tabela
     bingo.textContent = "BINGO";
@@ -99,49 +105,39 @@ function gerarCartela() {
 
         tabela.appendChild(corpoTabela);
     }
+    var vazio = document.getElementById('nomes');
+    vazio.value = ''
 }
 
-
 function jogar() {
-    var quantidadeJogadores = document.querySelectorAll('.tabela').length;
     var resultados = document.getElementById("numeros");
-
+    console.log(resultados)
     var numerosJaSorteados = [];
-    //SELECIONA OS NUMEROS
-    var tdArray = Array.from(document.querySelectorAll("#cartelas > section > table > tbody > tr > td"));
-    var textArray = tdArray.map(function (td) {
-        return td.textContent;
-    });
-    alert(textArray.join(", "));
+    var totalNumeros = 75;
+    var tdElements = document.querySelectorAll('td');
+    console.log(tdElements);
 
 
-    while (numerosJaSorteados.length < 76) {
-
-        var numeroSorteado = Math.floor(Math.random() * 75) + 1;
+    while (numerosJaSorteados.length < totalNumeros) {
+        var numeroSorteado = Math.floor(Math.random() * totalNumeros) + 1;
 
         if (numerosJaSorteados.includes(numeroSorteado)) {
-
             console.log("repetido");
-
         } else {
-
             numerosJaSorteados.push(numeroSorteado);
             var campoNumero = document.createElement('section');
             campoNumero.classList.add('s');
-            campoNumero.id = numeroSorteado
+            campoNumero.id = numeroSorteado;
             var textN = document.createTextNode(numeroSorteado);
             resultados.appendChild(campoNumero);
             campoNumero.appendChild(textN);
-
-            if (tdArray.includes(numeroSorteado)) {
-                var numerosCartela = document.querySelectorAll("#cartelas .tabela td[id='#" + numeroSorteado.toString() + "']");
-                // Faça algo com os elementos numerosCartela selecionados
-                numerosCartela.classList.add('acertou')
-            }
-
-
         }
-
     }
+}
 
-}    
+function apagar() {
+    var resultados = document.getElementById("numeros");
+    resultados.innerHTML = "";
+    var cartelas = document.getElementById('cartelas')
+    cartelas.innerHTML = '';
+}
