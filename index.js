@@ -47,9 +47,9 @@ function gerarCartela() {
                 }
                 while (numerosDaCartela.includes(numeroSorteado));
                 numerosDaCartela.push(numeroSorteado)
+                td.classList.add(numeroSorteado)
 
                 var textNode = document.createTextNode(numeroSorteado);
-                td.id = numeroSorteado
                 td.appendChild(textNode);
 
             } else if (j === 1) {
@@ -58,9 +58,9 @@ function gerarCartela() {
                 }
                 while (numerosDaCartela.includes(numeroSorteado));
                 numerosDaCartela.push(numeroSorteado)
+                td.classList.add(numeroSorteado)
 
                 var textNode = document.createTextNode(numeroSorteado);
-                td.id = numeroSorteado
                 td.appendChild(textNode);
 
 
@@ -74,9 +74,9 @@ function gerarCartela() {
                 }
                 while (numerosDaCartela.includes(numeroSorteado));
                 numerosDaCartela.push(numeroSorteado);
+                td.classList.add(numeroSorteado)
 
                 var textNode = document.createTextNode(numeroSorteado);
-                td.id = numeroSorteado
                 td.appendChild(textNode);
 
             } else if (j === 3) {
@@ -85,9 +85,9 @@ function gerarCartela() {
                 }
                 while (numerosDaCartela.includes(numeroSorteado));
                 numerosDaCartela.push(numeroSorteado);
+                td.classList.add(numeroSorteado)
 
                 var textNode = document.createTextNode(numeroSorteado);
-                td.id = numeroSorteado
                 td.appendChild(textNode);
             } else if (j === 4) {
                 do {
@@ -97,16 +97,14 @@ function gerarCartela() {
                 numerosDaCartela.push(numeroSorteado)
 
                 var textNode = document.createTextNode(numeroSorteado);
-                td.id = numeroSorteado
                 td.appendChild(textNode);
+                td.classList.add(numeroSorteado)
 
             }
         }
-
         tabela.appendChild(corpoTabela);
     }
     var vazio = document.getElementById('nomes');
-    vazio.value = ''
 }
 
 function jogar() {
@@ -115,7 +113,7 @@ function jogar() {
     var numerosJaSorteados = [];
     var totalNumeros = 75;
     var tdElements = document.querySelectorAll('td');
-    console.log(tdElements);
+    console.log(typeof tdElements);
 
 
     while (numerosJaSorteados.length < totalNumeros) {
@@ -131,6 +129,11 @@ function jogar() {
             var textN = document.createTextNode(numeroSorteado);
             resultados.appendChild(campoNumero);
             campoNumero.appendChild(textN);
+
+            if(tdElements.includes(numeroSorteado)){
+                var numeroAcertado = document.querySelectorAll('#id-' + numeroSorteado)
+                numeroAcertado.classList.add('acertou');
+            }
         }
     }
 }

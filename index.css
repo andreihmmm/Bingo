@@ -71,7 +71,6 @@ main {
 div#esquerda {
     width: 50vw;
     background-color: burlywood;
-    min-height: 60vh;
 }
 
 div#cartelas {
@@ -81,6 +80,7 @@ div#cartelas {
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
+    margin-bottom: 5vh;
 }
 
 .tabela {
@@ -124,6 +124,7 @@ div#direita {
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
+    margin-bottom: 5vh;
 }
 
 .s {
@@ -140,4 +141,17 @@ div#direita {
 
 .acertou {
     background-color: greenyellow;
+}
+
+footer{
+    width: 100%;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 0;
+    position:fixed;
+    padding: 10px;
+    color: darkblue;
+    background-color: white;
 }
