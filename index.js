@@ -25,13 +25,17 @@ function gerarCartela() {
     }
 
     var cartela = [gerarNumerosAleatorios(5, 1, 15), gerarNumerosAleatorios(5, 16, 30),
-    gerarNumerosAleatorios(5, 31, 45), gerarNumerosAleatorios(5, 46, 60),
+    gerarNumerosAleatorios(4, 31, 45), gerarNumerosAleatorios(5, 46, 60),
     gerarNumerosAleatorios(5, 61, 75)]
+
+    cartela[2][2] = 'X'
 
 
     jogadores.push({
         nomeJogador: nome,
-        cartela: cartela
+        cartela: cartela,
+        pontuacao: 0,
+        status: ''
     });
 
     console.log(jogadores)
@@ -88,21 +92,20 @@ function jogar() {
     var resultados = document.getElementById("numeros");
     console.log(resultados)
     var numerosJaSorteados = [];
-    var totalNumeros = 75;
+    acabou = false
+    totalNumeros = 75;
 
-
-    while (numerosJaSorteados.length < totalNumeros) {
+    while (!acabou) {
         var numeroSorteado = Math.floor(Math.random() * totalNumeros) + 1;
 
         if (numerosJaSorteados.includes(numeroSorteado)) {
-            console.log("repetido");
         } else {
             numerosJaSorteados.push(numeroSorteado);
+            console.log(numeroSorteado)
 
             for (i = 0; i < jogadores.length; i++) {
                 var jogador = jogadores[i]
                 var cartela = jogador.cartela
-                var acertos = [];
                 for (j = 0; j < 5; j++) {
                     var subArray = cartela[j];
                     if (subArray.includes(numeroSorteado)) {
@@ -113,12 +116,29 @@ function jogar() {
                     }
                 }
             }
+
             var campoNumero = document.createElement('section');
             campoNumero.classList.add('s');
             campoNumero.id = numeroSorteado;
             var textN = document.createTextNode(numeroSorteado);
             resultados.appendChild(campoNumero);
             campoNumero.appendChild(textN);
+
+            for (i = 0; i < jogadores.length; i++) {
+                var jogador = jogadores[i]
+                var cartela = jogador.cartela
+                for (j = 0; j < 5; j++) {
+                    var subArray = cartela[j]
+                    if (subArray.includes(numeroSorteado)) {
+                        jogador.pontuacao++
+                        if (jogador.pontuacao === 24) {
+                            alert(jogador.nomeJogador + ' venceu')
+                            acabou = true
+                            jogador.status = 'venceu'
+                        }
+                    }
+                }
+            }
         }
 
 
