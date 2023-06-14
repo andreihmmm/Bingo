@@ -69,6 +69,7 @@ function gerarCartela() {
 
             if (i === 2 && j === 2) {
                 td.innerText = 'X';
+                td.classList.add('acertou')
                 tr.appendChild(td);
             } else {
                 td.innerText = cartela[j][i];
@@ -88,17 +89,18 @@ function gerarCartela() {
     document.getElementById('nomes').value = '';
 }
 
-function jogar() {
+function task() {
     var resultados = document.getElementById("numeros");
     console.log(resultados)
     var numerosJaSorteados = [];
     acabou = false
     totalNumeros = 75;
 
-    while (!acabou) {
+    function sorteio() {
         var numeroSorteado = Math.floor(Math.random() * totalNumeros) + 1;
 
         if (numerosJaSorteados.includes(numeroSorteado)) {
+            sorteio();
         } else {
             numerosJaSorteados.push(numeroSorteado);
             console.log(numeroSorteado)
@@ -139,12 +141,21 @@ function jogar() {
                     }
                 }
             }
+
+            if (!acabou) {
+                setTimeout(sorteio, 2000);
+            }
         }
-
-
-
     }
+
+    sorteio();
 }
+
+function jogar(i) {
+    setTimeout(task, 500 * i);
+}
+
+
 
 
 function apagar() {
@@ -153,12 +164,4 @@ function apagar() {
     var cartelas = document.getElementById('cartelas')
     cartelas.innerHTML = '';
     jogadores = [];
-}
-
-function verificarGanhador() {
-    var venceu = false
-
-    while (!venceu == true) {
-
-    }
 }
